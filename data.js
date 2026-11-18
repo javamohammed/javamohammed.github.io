@@ -64,8 +64,7 @@ const APPS = [
       en: "The Quran in the Warsh reading from Nafi', in Uthmani script. Works offline, with a night mode, an index of surahs, hizbs and juz', and it reopens on your last page.",
       fr: "Le Coran selon la lecture de Warsh d'après Nafi', en écriture uthmanie. Fonctionne hors ligne, avec un mode nuit, un index des sourates, hizbs et juz', et reprend à la dernière page lue.",
     },
-    // يمكنك لاحقاً وضع الأيقونة في مجلد images وكتابة: "images/quranwarsh-icon.png"
-    icon: "https://play-lh.googleusercontent.com/7Uj1QqbxK0PhwOKdcdkcerb--M5ViHdwKwtKc8Yb-aK5ZirW44bNb7255Xil-89ezjDzzwppSU4edPv36YuP=w240-h480",
+    icon: "images/quranwarsh-icon.png",
     play: "https://play.google.com/store/apps/details?id=com.aouladbouchta.quranwarsh",
     privacy: "https://sites.google.com/view/quran-warsh-nafie/accueil",
     docsLang: "fr", // لغة صفحة الخصوصية
