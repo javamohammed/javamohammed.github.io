@@ -160,8 +160,14 @@
     <script>
       const UI = {
         ar: { apps: "التطبيقات", channel: "على يوتيوب", next: "قيد التحضير", contact: "للتواصل", play: "حمّل من Google Play", privacy: "سياسة الخصوصية", terms: "شروط الاستخدام", watch: "شاهد القناة على يوتيوب" },
-        en: { apps: "Apps", channel: "On YouTube", next: "In the works", contact: "Get in touch", play: "Get it on Google Play", privacy: "Privacy policy (Arabic)", terms: "Terms of use (Arabic)", watch: "Watch the channel on YouTube" },
-        fr: { apps: "Applications", channel: "Sur YouTube", next: "En préparation", contact: "Me contacter", play: "Disponible sur Google Play", privacy: "Confidentialité (en arabe)", terms: "Conditions d'utilisation (en arabe)", watch: "Voir la chaîne sur YouTube" },
+        en: { apps: "Apps", channel: "On YouTube", next: "In the works", contact: "Get in touch", play: "Get it on Google Play", privacy: "Privacy policy", terms: "Terms of use", watch: "Watch the channel on YouTube" },
+        fr: { apps: "Applications", channel: "Sur YouTube", next: "En préparation", contact: "Me contacter", play: "Disponible sur Google Play", privacy: "Confidentialité", terms: "Conditions d'utilisation", watch: "Voir la chaîne sur YouTube" },
+      };
+      // تنبيه بلغة الصفحة إذا اختلفت عن لغة الزائر
+      const IN_LANG = {
+        ar: { fr: " (بالفرنسية)", en: " (بالإنجليزية)" },
+        en: { ar: " (Arabic)", fr: " (French)" },
+        fr: { ar: " (en arabe)", en: " (en anglais)" },
       };
       const LANGS = ["ar", "en", "fr"];
       const $ = (id) => document.getElementById(id);
@@ -198,7 +204,9 @@
         $("social").innerHTML = (typeof SOCIAL !== "undefined" ? SOCIAL : []).map((x) => `<li><a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.name)}</a></li>`).join("");
         $("copy").textContent = "© " + new Date().getFullYear() + " " + L(SITE.name);
 
-        $("appsList").innerHTML = APPS.map((a) => `
+        $("appsList").innerHTML = APPS.map((a) => {
+          const note = (a.docsLang || "ar") === lang ? "" : IN_LANG[lang][a.docsLang || "ar"] || "";
+          return `
           <li class="app">
             <img src="${esc(a.icon)}" alt="" width="96" height="96" loading="lazy" />
             <div>
@@ -206,11 +214,12 @@
               <p>${esc(L(a.desc))}</p>
               <div class="acts">
                 ${a.play ? `<a class="play" href="${esc(a.play)}" target="_blank" rel="noopener">${t.play}</a>` : ""}
-                ${a.privacy ? `<a href="${esc(a.privacy)}">${t.privacy}</a>` : ""}
-                ${a.terms ? `<a href="${esc(a.terms)}">${t.terms}</a>` : ""}
+                ${a.privacy ? `<a href="${esc(a.privacy)}">${t.privacy}${note}</a>` : ""}
+                ${a.terms ? `<a href="${esc(a.terms)}">${t.terms}${note}</a>` : ""}
               </div>
             </div>
-          </li>`).join("");
+          </li>`;
+        }).join("");
 
         $("channels").innerHTML = `<h2>${t.channel}</h2>` + CHANNELS.map((c) => `
           <div class="screen">
