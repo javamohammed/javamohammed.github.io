@@ -93,14 +93,6 @@ const NEXT = [
       fr: "Une chaîne de dessins animés éducatifs pour enfants.",
     },
   },
-  {
-    name: { ar: "قصص متحركة بالإنجليزية", en: "Animated stories in English", fr: "Histoires animées en anglais" },
-    desc: {
-      ar: "قناة قصص موجّهة للجمهور الأمريكي.",
-      en: "A story channel for an American audience.",
-      fr: "Une chaîne d'histoires pour le public américain.",
-    },
-  },
 ];
 
 // حساباتك على مواقع التواصل — أضف أو احذف كما تشاء
